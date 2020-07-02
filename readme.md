@@ -1,3 +1,5 @@
+# File Concatinator
+
 A util program to help me print a code repo.
 
 Concatenates all code files in a repo (or any folder really) into one text file. It adds some
