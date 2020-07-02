@@ -1,4 +1,4 @@
 package config
 
 var SuffixWhitelist = []string{".go"}
-var MaxLinesPerPage = 65
+var MaxLinesPerPage = 75

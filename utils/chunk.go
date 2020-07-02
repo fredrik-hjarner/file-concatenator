@@ -1,7 +1,6 @@
 package utils
 
-//
-func chunk(slice []string, chunkSize int) [][]string {
+func Chunk(slice []string, chunkSize int) [][]string {
 	var chunks [][]string
 
 	for i := 0; i < len(slice); i += chunkSize {

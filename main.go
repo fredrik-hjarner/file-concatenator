@@ -4,8 +4,13 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"strings"
 
+	"github.com/thoas/go-funk"
+
+	"github.com/fredrik-hjarner/file-concatinator/config"
 	"github.com/fredrik-hjarner/file-concatinator/paths"
+	"github.com/fredrik-hjarner/file-concatinator/utils"
 )
 
 func fileToString(path string) string {
@@ -29,18 +34,21 @@ func addHeader(path string) string {
 	result += fmt.Sprintf("File: %v\n", path)
 	result += "////////////////////////////////////////////////////////////\n\n"
 	result += fileToString(path)
-
-	// count the number of newlines
-	// lines := strings.Split(result, "\n")
-	// fmt.Printf("lines: %v\n", len(lines))
 	return result
-	// check(writeErr)
-	// 	_, writeErr = f.WriteString("\f")
 }
 
 func splitIntoPages(fileString string) string {
-	// pages := make([][]string, 0)
-	return fileString
+	lines := strings.Split(fileString, "\n")
+	pages := utils.Chunk(lines, config.MaxLinesPerPage)
+	comdensedPages := funk.Map(pages, func(page []string) string {
+		return strings.Join(page, "\n") + "\\f\f"
+	})
+	result := strings.Join(comdensedPages.([]string), "")
+	oddNrPages := len(pages)%2 == 1
+	if oddNrPages {
+		result += "\\f\f"
+	}
+	return result
 }
 
 func main() {
