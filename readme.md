@@ -15,9 +15,11 @@ margin-top: 15mm
 
 margin-bottom: 5mm
 
-## Install
+## Install & use
 
-Dunno yet...
+Just do `go install`
+
+then you'll be able to write `file-concatinator` in terminal while in a directory structure that contains code!
 
 ## Testing
 
