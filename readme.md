@@ -13,6 +13,8 @@ you don't have to be afraid to be completely replaced by a machine, yet...
 - 100 characters fit per line.
 - 75 lines fit on one page.
 
+2 sheets per paper is nice, too.
+
 ### If printing with WordPad
 
 Courier New 8px
